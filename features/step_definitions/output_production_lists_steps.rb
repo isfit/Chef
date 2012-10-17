@@ -10,6 +10,7 @@ When /^I go to show orders$/ do
 end
 
 When /^I select "(.*?)"$/ do |arg1|
+  pending
   page.select(arg1, :from => "date")
 end
 

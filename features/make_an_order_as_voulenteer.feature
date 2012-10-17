@@ -7,6 +7,5 @@ Feature: Ordering lunches as a voulenteer not in a workshop
   Scenario: Place an order for one of the available meals
     Given I am logged in as a volunteer
     And there is a meal named "Kake" available on "2012-02-13"
-    And I have not ordered any food
     When I place an order for "Kake" to be delivered at "2012-02-13"
     Then I should have one order registered for delivery at "2012-02-13" for the meal named "Kake"

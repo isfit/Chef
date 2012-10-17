@@ -1,6 +1,5 @@
 Given /^I am a Workshop\-leader$/ do
-  v = User.new({workshop_leader:true})
-  v.save
+  pending
 end
 
 When /^I place an order for (\d+) meals named "(.*?)" to be delivered at "(.*?)"$/ do |arg1, arg2, arg3|
