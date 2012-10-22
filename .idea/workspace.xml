@@ -4,8 +4,10 @@
     <list default="true" id="f3d82bab-f3d2-4e3e-bc16-956a3ae16df9" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/app/models/.meal.rb.swp" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/app/models/.order.rb.swp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/models/.user.rb.swp" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/app/models/.workshop.rb.swp" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/orders/.index.html.erb.swp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/config/.routes.rb.swp" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/db/.schema.rb.swp" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/db/migrate/.20121001163006_create_meals.rb.swp" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/db/migrate/.20121001184210_create_volunteer_orders.rb.swp" afterPath="" />
@@ -14,6 +16,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/db/migrate/.20121010180655_create_users.rb.swp" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/db/migrate/.20121010181000_drop_volunteer.rb.swp" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/db/migrate/.20121010181912_rename_volunteer_orders.rb.swp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/db/test.sqlite3-journal" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/features/.make_an_order_as_voulenteer.feature.swp" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/features/.make_an_order_as_workshop_leader.feature.swp" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/features/.output_production_lists.feature.swp" afterPath="" />
@@ -24,16 +27,13 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/features/support/.env.rb.swp" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/spec/controllers/.orders_controller_spec.rb.swp" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/spec/helpers/.orders_helper_spec.rb.swp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/helpers/orders_helper_spec.rb" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/spec/models/.meal_spec.rb.swp" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/spec/models/.order_spec.rb.swp" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/spec/models/.user_spec.rb.swp" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/.user.rb.swp" afterPath="$PROJECT_DIR$/app/models/.user.rb.swp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/.routes.rb.swp" afterPath="$PROJECT_DIR$/config/.routes.rb.swp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/order.rb" afterPath="$PROJECT_DIR$/app/models/order.rb" />
     </list>
     <ignored path="chef.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -88,6 +88,19 @@
   </component>
   <component name="FavoritesManager">
     <favorites_list name="chef" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="userservices.wsdl" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$USER_HOME$/Desktop/userservices.wsdl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="23" selection-start="1406" selection-end="1406" vertical-scroll-proportion="0.02345679">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -299,7 +312,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="FullScreen" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
+    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -549,7 +563,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -564,7 +578,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.67058825" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44444445" sideWeight="0.67058825" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -627,6 +641,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$USER_HOME$/Desktop/userservices.wsdl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="23" selection-start="1406" selection-end="1406" vertical-scroll-proportion="0.02345679">
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
 
