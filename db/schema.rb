@@ -30,7 +30,8 @@ ActiveRecord::Schema.define(:version => 20121022165233) do
     t.string   "user_id"
   end
 
-  create_table "users", :force => true do |t|
+  create_table "users", :id => false, :force => true do |t|
+    t.integer  "id",                                        :default => 0, :null => false
     t.string   "given_name"
     t.string   "family_name"
     t.date     "date_of_birth"
