@@ -25,6 +25,7 @@ class OrdersController < ApplicationController
   # GET /orders/new.json
   def new
     @order = Order.new
+    @meal_types = MealType.all.collect {|p| [ p.title, p.id ] }
 
     respond_to do |format|
       format.html # new.html.erb

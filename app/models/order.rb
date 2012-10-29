@@ -1,7 +1,9 @@
 class Order < ActiveRecord::Base
-  attr_accessible :delivered_at, :meal_id, :meal, :amount
-  belongs_to :meal
+  attr_accessible :delivered_at, :meals_attributes, :amount, :deliver_to
+  has_many :meals
+  has_many :meal_types, through: :meals
   belongs_to :user
+  accepts_nested_attributes_for :meals
 
   def self.to_be_delivered_on(date)
     self.where("delivered_at >= ? AND delivered_at <= ?", date, date+1)

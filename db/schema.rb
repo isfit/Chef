@@ -11,23 +11,63 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121022165233) do
+ActiveRecord::Schema.define(:version => 20121024172617) do
+
+  create_table "groups", :id => false, :force => true do |t|
+    t.integer "id",                             :default => 0, :null => false
+    t.string  "name_en"
+    t.string  "name_no"
+    t.integer "section_id"
+    t.integer "festival_id"
+    t.string  "email",          :limit => 1000
+    t.string  "tag",                                           :null => false
+    t.text    "description_en"
+    t.text    "description_no"
+  end
+
+  create_table "groups_positions", :id => false, :force => true do |t|
+    t.integer "group_id"
+    t.integer "position_id"
+  end
+
+  create_table "meal_types", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "meals", :force => true do |t|
-    t.string   "title"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.datetime "available_from"
-    t.datetime "available_to"
+    t.integer "amount"
+    t.integer "meal_type_id"
+    t.integer "order_id"
   end
 
   create_table "orders", :force => true do |t|
     t.datetime "delivered_at"
-    t.integer  "meal_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
-    t.integer  "amount"
     t.string   "user_id"
+    t.string   "deliver_to"
+  end
+
+  create_table "positions", :id => false, :force => true do |t|
+    t.integer  "id",             :default => 0, :null => false
+    t.string   "title_en"
+    t.string   "title_no"
+    t.integer  "user_id"
+    t.text     "description_en"
+    t.text     "description_no"
+    t.string   "group_dn"
+    t.integer  "admission_id"
+    t.integer  "group_id"
+    t.integer  "number",         :default => 1, :null => false
+    t.datetime "publish_from"
+    t.datetime "publish_to"
+  end
+
+  create_table "positions_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "position_id", :null => false
   end
 
   create_table "users", :id => false, :force => true do |t|

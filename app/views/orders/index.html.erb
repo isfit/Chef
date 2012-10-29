@@ -1,11 +1,9 @@
 <h1>Listing orders</h1>
 
-<table>
+<table class="table">
   <tr>
-    <th>Meal</th>
+    <th>Delivery to:</th>
     <th>Delivered at</th>
-    <th>Amount</th>
-    <th>User</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,14 +11,18 @@
 
 <% @orders.each do |order| %>
   <tr>
-    <td>order.meal.title</td>
-    <td>order.delivered_at</td>
-    <td>order.amount</td>
-    <td>order.user.username</td>
+    <td><%= order.deliver_to %></td>
+    <td><%= order.delivered_at %></td>
     <td><%= link_to 'Show', order %></td>
     <td><%= link_to 'Edit', edit_order_path(order) %></td>
     <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
+  <% order.meals.each do |meal| %>
+    <tr>
+      <td><%= meal.meal_type.title %></td>
+      <td><%= meal.amount %></td>
+    <tr>
+  <% end %>
 <% end %>
 </table>
 
