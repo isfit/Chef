@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Title</th>
     <th></th>
     <th></th>
     <th></th>
@@ -9,6 +10,7 @@
 
 <% @meal_types.each do |meal_type| %>
   <tr>
+    <td><%= meal_type.title %></td>
     <td><%= link_to 'Show', meal_type %></td>
     <td><%= link_to 'Edit', edit_meal_type_path(meal_type) %></td>
     <td><%= link_to 'Destroy', meal_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>

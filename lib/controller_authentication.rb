@@ -17,7 +17,7 @@
 #   before_filter :login_required, :except => [:index, :show]
 module ControllerAuthentication
   def self.included(controller)
-    controller.send :helper_method, :current_user, :logged_in?, :redirect_to_target_or_default
+    controller.send :helper_method, :current_user, :logged_in?, :redirect_to_target_or_default, :workshop_leader_required
   end
 
   def current_user
@@ -26,6 +26,13 @@ module ControllerAuthentication
 
   def logged_in?
     current_user
+  end
+
+  def workshop_leader_required
+    unless current_user.workshop_leader?
+      store_target_location
+      redirect_to login_url, :alert => "Access denied!"
+    end
   end
 
   def login_required

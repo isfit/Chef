@@ -1,0 +1,35 @@
+<h1>Listing orders for <%= params[:date] %></h1>
+
+<%= link_to "Generate order-pdf", 'orders'(:format => :pdf)%>
+
+<%= form_tag "orders", method: "post" do %>
+<%= select_tag :date, '<option>2012-10-28</option><option selected="selected">2012-10-29</option><option>2012-10-30</option>'.html_safe %>
+<%= submit_tag "Reload" %>
+<% end %>
+
+<table class="table">
+  <tr>
+    <th>Delivery to:</th>
+    <th>Delivered at</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @orders.each do |order| %>
+    <tr>
+      <td><%= order.deliver_to %></td>
+      <td><%= order.delivered_at %></td>
+      <td><%= link_to 'Show', order %></td>
+      <td><%= link_to 'Edit', edit_order_path(order) %></td>
+      <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% order.meals.each do |meal| %>
+      <tr>
+        <td><%= meal.meal_type.title %></td>
+        <td><%= meal.amount %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+

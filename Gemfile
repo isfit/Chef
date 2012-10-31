@@ -4,6 +4,7 @@ gem 'rails', '3.2.8'
 gem 'sqlite3'
 gem 'mysql2'
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'prawn'
 
 # Gems used only for assets and not required
 # in production environments by default.

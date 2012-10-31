@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_filter :login_required
   # GET /orders
   # GET /orders.json
   def index
@@ -36,12 +37,14 @@ class OrdersController < ApplicationController
   # GET /orders/1/edit
   def edit
     @order = Order.find(params[:id])
+    @meal_types = MealType.all.collect {|p| [ p.title, p.id ] }
   end
 
   # POST /orders
   # POST /orders.json
   def create
     @order = Order.new(params[:order])
+    @order.user = current_user
 
     respond_to do |format|
       if @order.save

@@ -1,21 +1,21 @@
 class Group < ActiveRecord::Base
+  self.primary_key = :id
   belongs_to :section
   belongs_to :festival
   has_and_belongs_to_many :positions
-  has_and_belongs_to_many :roles
 
   scope :organization_groups, :conditions => {:section_id => nil, :festival_id => nil}
 
-  def id_name
-    if(section.nil?)
-      {"id"=>id, "name"=>"#{festival.year.to_s} - #{name_en}"}   
-    else
-      {"id"=>id, "name"=>"#{section.festival.year.to_s} - #{section.name_en} - #{name_en}"}  
+  def users
+    @users = []
+    self.positions.each do |p|
+      p.users.each do |u|
+        if u.id > 1
+          @users << u
+        end
+      end            
     end
-  end
-  
-  def self.name_like(q)
-    where("name_en like '%#{q}%' OR name_no like '%#{q}%'")
+    return @users.uniq{|x| x.id}
   end
 end
 

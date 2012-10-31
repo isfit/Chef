@@ -8,4 +8,8 @@ class Order < ActiveRecord::Base
   def self.to_be_delivered_on(date)
     self.where("delivered_at >= ? AND delivered_at <= ?", date, date+1)
   end
+
+  def total_order_amount
+    meals.sum(:amount)
+  end
 end

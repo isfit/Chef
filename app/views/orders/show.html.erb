@@ -1,5 +1,37 @@
 <p id="notice"><%= notice %></p>
 
+<table class="table">
+  <tr>
+    <th>Leveringsadresse</th>
+    <th>Leveringstidspunkt</th>
+  </tr>
+  <tr>
+    <td>
+      <h3><%= @order.deliver_to %></h3>
+    </td>
+    <td>
+      <h2><%= @order.delivered_at.strftime("%a, %d. %b") %></br>
+      <%= @order.delivered_at.strftime("%H:%M") %></h2>
+    </td>
+  </tr>
+</table>
 
+<table class="table">
+  <tr>
+    <th>Totalt antall</th>
+    <th><%= @order.total_order_amount %></th>
+  </tr>
+  <tr>
+    <th>Meal:</th>
+    <th>Amount:</th>
+  </tr>
+  
+  <% @order.meals.each do |meal| %>
+    <tr>
+      <td><%= meal.meal_type.title %></td>
+      <td><%= meal.amount %></td>
+    <tr>
+  <% end %>
+</table>
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
