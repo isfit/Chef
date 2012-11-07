@@ -1,4 +1,4 @@
-<%= form_for(@order) do |f| %>
+<%= form_for(@order, url: create_mass_order_path) do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -18,11 +18,6 @@
   </div>
 
   <%= link_to_add_fields "Add meal", f, :meals %>
-
-  <div>
-    <%= f.label :delivered_at, "Choose time of delivery" %>
-    <%= f.datetime_select(:delivered_at) %>
-  </div>
 
   <div>
     <%= f.label :deliver_to, "Delivery address" %> 

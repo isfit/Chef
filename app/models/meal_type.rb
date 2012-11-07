@@ -3,12 +3,12 @@ class MealType < ActiveRecord::Base
   has_many :meals
   has_many :orders, through: :meals
 
-  def self.available_at(date)
-    self.where("available_from < ? and available_to > ?", date, date )
+  def amount_ordered_for_day(date)
+    o = Order.to_be_delivered_on(date)
+    meals.where(order_id: o).sum(:amount)
   end
 
-  def available?(date)
-    date > available_from && date < available_to
+  def amount_sum
+    meals.sum(:amount)
   end
-
 end

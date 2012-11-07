@@ -5,6 +5,7 @@ gem 'sqlite3'
 gem 'mysql2'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'prawn'
+gem 'validates_timeliness', '~> 3.0'
 
 # Gems used only for assets and not required
 # in production environments by default.

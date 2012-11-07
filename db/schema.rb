@@ -11,9 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121024172617) do
+ActiveRecord::Schema.define(:version => 20121031200515) do
 
-  create_table "groups", :force => true do |t|
+  create_table "groups", :id => false, :force => true do |t|
+    t.integer "id",                             :default => 0, :null => false
     t.string  "name_en"
     t.string  "name_no"
     t.integer "section_id"
@@ -24,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20121024172617) do
     t.text    "description_no"
   end
 
-  create_table "groups_positions", :force => true do |t|
+  create_table "groups_positions", :id => false, :force => true do |t|
     t.integer "group_id"
     t.integer "position_id"
   end
@@ -47,9 +48,11 @@ ActiveRecord::Schema.define(:version => 20121024172617) do
     t.datetime "updated_at",   :null => false
     t.string   "user_id"
     t.string   "deliver_to"
+    t.string   "comment"
   end
 
-  create_table "positions", :force => true do |t|
+  create_table "positions", :id => false, :force => true do |t|
+    t.integer  "id",             :default => 0, :null => false
     t.string   "title_en"
     t.string   "title_no"
     t.integer  "user_id"
@@ -63,12 +66,13 @@ ActiveRecord::Schema.define(:version => 20121024172617) do
     t.datetime "publish_to"
   end
 
-  create_table "positions_users", :force => true do |t|
+  create_table "positions_users", :id => false, :force => true do |t|
     t.integer "user_id"
     t.integer "position_id", :null => false
   end
 
-  create_table "users", :force => true do |t|
+  create_table "users", :id => false, :force => true do |t|
+    t.integer  "id",                                        :default => 0, :null => false
     t.string   "given_name"
     t.string   "family_name"
     t.date     "date_of_birth"

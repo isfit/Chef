@@ -1,12 +1,26 @@
 <h1>Listing orders for <%= params[:date] %></h1>
 
-<%= link_to "Generate order-pdf", 'orders'(:format => :pdf)%>
+<%= link_to "Generate order-pdf", admin_orders_url(:format => :pdf)%>
 
 <%= form_tag "orders", method: "post" do %>
 <%= select_tag :date, '<option>2012-10-28</option><option selected="selected">2012-10-29</option><option>2012-10-30</option>'.html_safe %>
 <%= submit_tag "Reload" %>
 <% end %>
 
+<h2>Totalt denne dagen</h2>
+<table class="table">
+  <tr>
+    <th>Meal</th>
+    <th>Amount</th>
+  </tr>
+  <% @meal_types.each do |meal| %>
+    <tr>
+      <td><%= meal[0] %></td>
+      <td><%= meal[1] %></td>
+    <tr>
+  <% end %>
+</table>
+<br/>
 <table class="table">
   <tr>
     <th>Delivery to:</th>
