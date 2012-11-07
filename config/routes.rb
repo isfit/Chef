@@ -4,6 +4,7 @@ Chef::Application.routes.draw do
   resources :sessions
   resources :meal_types
   match 'login' => 'sessions#new'
+  match 'logout' => 'sessions#destroy'
 
   match 'admin/index' => 'admin#index'
   match 'admin/orders' => 'admin#orders'

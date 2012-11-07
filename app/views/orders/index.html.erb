@@ -1,29 +1,39 @@
 <h1>Listing orders</h1>
 
-<table class="table">
+<table class="table table-hover">
+  <thead>
   <tr>
-    <th>Delivery to:</th>
-    <th>Delivered at</th>
+    <th>Delivery address:</th>
+    <th>Delivery time:</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
+</thead>
 
-<% @orders.each do |order| %>
-  <tr>
-    <td><%= order.deliver_to %></td>
-    <td><%= order.delivered_at %></td>
-    <td><%= link_to 'Show', order %></td>
-    <td><%= link_to 'Edit', edit_order_path(order) %></td>
-    <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-  <% order.meals.each do |meal| %>
+<tbody>
+  <% @orders.each do |order| %>
     <tr>
-      <td><%= meal.meal_type.title %></td>
-      <td><%= meal.amount %></td>
+      <td><%= link_to simple_format(order.deliver_to), order%></td>
+      <td><%= link_to order.delivered_at.strftime("%a %d. %b, %H:%M"), order %></td>
+      <td class="btn-group" >
+          <%= link_to edit_order_path(order), class:"btn" do %>
+            <i class="icon-pencil"></i>
+          <%end%>
+          <%= link_to order, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn" do %>
+            <i class="icon-trash"></i>
+          <% end %>
+      </td>
     </tr>
+    <% order.meals.each do |meal| %>
+      <tr>
+        <td></td>
+        <td><%= meal.meal_type.title %></td>
+        <td><%= meal.amount %></td>
+      </tr>
+    <% end %>
   <% end %>
-<% end %>
+</tbody>
 </table>
 
 <br />

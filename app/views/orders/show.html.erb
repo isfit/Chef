@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<table class="table">
+<table class="table table-bordered">
   <tr>
     <th>Leveringsadresse</th>
     <th>Leveringstidspunkt</th>
   </tr>
   <tr>
     <td>
-      <h3><%= @order.deliver_to %></h3>
+      <h3><%= simple_format(@order.deliver_to) %></h3>
     </td>
     <td>
       <h2><%= @order.delivered_at.strftime("%a, %d. %b") %></br>
@@ -16,7 +16,7 @@
   </tr>
 </table>
 
-<table class="table">
+<table class="table table-bordered">
   <tr>
     <th>Totalt antall</th>
     <th><%= @order.total_order_amount %></th>
