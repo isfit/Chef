@@ -1,40 +1,56 @@
-<%= form_for(@order) do |f| %>
+<%= form_for @order do |f| %>
   <% if @order.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation span12">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
       <ul>
-      <% @order.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @order.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
+<p class="span12">Måltid leveres normalt til lønsj, andre tidspunkt kan være mulig.</p>  
+  <div class="span6">
+    <%= f.text_area :deliver_to, rows:4, placeholder:"Leveringsadresse" %>
+  </div>
 
-  <div>
+  <div class="span5">
+    <p>
+    <%= text_field_tag :date, nil, class:"datepicker" %>
+    </p>
+    <p>
+    <%= f.time_select :delivered_at, {minute_step: 15, default: DateTime.new(2013,2,14,12,00)}, class:"input-small"%>
+    </p></div>
+
+  <div class="span12">
+    <h4>Mattyper og mengde</h4>
     <%= f.fields_for :meals do |meal| %>
       <%= render 'meal_fields', f: meal %>
     <% end %>
   </div>
 
-  <%= link_to_add_fields "Add meal", f, :meals %>
+  <p class="span12" >
+  <%= link_to_add_fields "Legg til enda et måltid", f, :meals %>
+  </p>
 
-  <div>
-    <%= f.label :delivered_at, "Choose time of delivery" %>
-    <%= f.datetime_select(:delivered_at) %>
+
+
+
+
+  <div class="span5">
+    <%= f.text_area :comment, rows:3, placeholder:"Kommentar" %> 
   </div>
 
-  <div>
-    <%= f.label :deliver_to, "Delivery address" %> 
-    <%= f.text_area :deliver_to %> 
-  </div>
-
-  <div>
-    <%= f.label :comment, "Comments to other" %> 
-    <%= f.text_area :comment %> 
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="span12">
+    <%= f.submit "Place order", class:"btn btn-primary"%>
   </div>
 <% end %>
+<script>
+  $('.datepicker').datepicker({
+    startDate:new Date(2013,1,7),
+    endDate:new Date(2013,1,18),
+    format: 'yyyy-mm-dd'
+  });
+</script>
+

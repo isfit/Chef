@@ -26,6 +26,7 @@ class OrdersController < ApplicationController
   # GET /orders/new.json
   def new
     @order = Order.new
+    @order.meals << Meal.new
     @meal_types = MealType.all.collect {|p| [ p.title, p.id ] }
 
     respond_to do |format|
@@ -36,6 +37,7 @@ class OrdersController < ApplicationController
 
   def new_mass_order
     @order = Order.new
+    @order.meals << Meal.new
     @meal_types = MealType.all.collect {|p| [ p.title, p.id ] }
 
     respond_to do |format|
@@ -78,12 +80,17 @@ class OrdersController < ApplicationController
   # GET /orders/1/edit
   def edit
     @order = current_user.orders.find(params[:id])
+    params[:date] = @order.delivered_at
     @meal_types = MealType.all.collect {|p| [ p.title, p.id ] }
   end
 
   # POST /orders
   # POST /orders.json
   def create
+    date = DateTime.parse(params[:date])
+    params[:order]["delivered_at(1i)"] = date.year.to_s
+    params[:order]["delivered_at(2i)"] = date.mon.to_s
+    params[:order]["delivered_at(3i)"] = date.mday.to_s
     @order = Order.new(params[:order])
     @order.user = current_user
 

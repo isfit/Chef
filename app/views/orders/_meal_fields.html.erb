@@ -1,5 +1,4 @@
-<fieldset>
+<div class="control-group controls">
+  <%= f.text_field :amount, placeholder:"Amount, (1 per person)"%>
   <%= f.select :meal_type_id, @meal_types %>
-  <%= f.label :amount, "Amount, (1 per person)" %>
-  <%= f.text_field :amount %>
-</fieldset>
+</div>

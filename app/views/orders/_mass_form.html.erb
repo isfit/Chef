@@ -11,25 +11,25 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="span12">
     <%= f.fields_for :meals do |meal| %>
       <%= render 'meal_fields', f: meal %>
     <% end %>
   </div>
 
-  <%= link_to_add_fields "Add meal", f, :meals %>
+  <p class="span12" >
+  <%= link_to_add_fields "Legg til enda en mattype", f, :meals %>
+  </p>
 
-  <div>
-    <%= f.label :deliver_to, "Delivery address" %> 
-    <%= f.text_area :deliver_to %> 
+  <div class="span4">
+    <%= f.text_area :deliver_to, rows:3, placeholder:"Leveringsadresse" %>
   </div>
 
-  <div>
-    <%= f.label :comment, "Comments to other" %> 
-    <%= f.text_area :comment %> 
+  <div class="span5">
+    <%= f.text_area :comment, rows:3, placeholder:"Kommentar" %> 
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="span12">
+    <%= f.submit "Place order", class:"btn btn-primary"%>
   </div>
 <% end %>
