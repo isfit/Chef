@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+  before_filter :admin_required
 
   def orders
     if params[:date].nil? 
@@ -19,10 +20,6 @@ class AdminController < ApplicationController
           disposition: "inline"
       end
     end
-  end
-
-  def production_amount
-
   end
 
 end

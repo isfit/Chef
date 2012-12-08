@@ -28,7 +28,16 @@ module ControllerAuthentication
     current_user
   end
 
+  def admin_required
+    login_required
+    unless current_user.admin?
+      store_target_location
+      redirect_to login_url, :alert => "Access denied!"
+    end
+  end
+
   def workshop_leader_required
+    login_required
     unless current_user.workshop_leader?
       store_target_location
       redirect_to login_url, :alert => "Access denied!"

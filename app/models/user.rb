@@ -11,4 +11,9 @@ class User < ActiveRecord::Base
     #groups.include?(Group.find(33))
     true
   end
+
+  def admin?
+    # IT eller forpleining
+    groups.include?(Group.find(89)) || groups.include?(Group.find(93))
+  end
 end
