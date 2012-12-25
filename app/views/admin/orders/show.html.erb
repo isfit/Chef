@@ -1,0 +1,49 @@
+<div class="span12">
+  <h1>Alle bestillinger for <%= params[:id] %></h1>
+
+  <div class="btn-group">
+    <%= link_to admin_order_path(id: params[:id], format: :pdf), class:"btn btn-primary" do %>
+      <i class="icon-print"></i> Generer ordrebilag for utskrift
+    <% end %>
+  </div>
+
+  <h2>Totalt denne dagen</h2>
+  <table class="table">
+    <tr>
+      <th>Meal</th>
+      <th>Amount</th>
+    </tr>
+    <% @meal_types.each do |meal| %>
+      <tr>
+        <td><%= meal[0] %></td>
+        <td><%= meal[1] %></td>
+        <tr>
+        <% end %>
+      </table>
+      <br/>
+      <table class="table">
+        <tr>
+          <th>Delivery to:</th>
+          <th>Delivered at</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.deliver_to %></td>
+            <td><%= order.delivered_at %></td>
+            <td><%= link_to 'Show', order %></td>
+            <td><%= link_to 'Edit', edit_order_path(order) %></td>
+            <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <% order.meals.each do |meal| %>
+            <tr>
+              <td><%= meal.meal_type.title %></td>
+              <td><%= meal.amount %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
