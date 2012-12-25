@@ -2,7 +2,6 @@
   <% if @order.errors.any? %>
     <div id="error_explanation span12">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
       <ul>
         <% @order.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -10,18 +9,7 @@
       </ul>
     </div>
   <% end %>
-<p class="span12">Måltid leveres normalt til lønsj, andre tidspunkt kan være mulig.</p>  
-  <div class="span6">
-    <%= f.text_area :deliver_to, rows:4, placeholder:"Leveringsadresse" %>
-  </div>
-
-  <div class="span5">
-    <p>
-    <%= text_field_tag :date, nil, class:"datepicker" %>
-    </p>
-    <p>
-    <%= f.time_select :delivered_at, {minute_step: 15, default: DateTime.new(2013,2,14,12,00)}, class:"input-small"%>
-    </p></div>
+  <p class="span12">Måltid leveres normalt til lønsj, andre tidspunkt kan være mulig.</p>  
 
   <div class="span12">
     <h4>Mattyper og mengde</h4>
@@ -34,16 +22,28 @@
   <%= link_to_add_fields "Legg til enda et måltid", f, :meals %>
   </p>
 
+  <h4 class="span12">Leveringssted og tidspunkt</h4>
 
-
-
+  <div class="span4">
+    <%= f.text_area :deliver_to, rows:4, placeholder:"Leveringsadresse" %>
+  </div>
 
   <div class="span5">
+    <p>
+    <%= text_field_tag :date, nil, class:"datepicker" %>
+    </p>
+    <p>
+    <%= f.time_select :delivered_at, {minute_step: 15, default: DateTime.new(2013,2,14,12,00)}, class:"input-small"%>
+    </p>
+  </div>
+
+  <div class="span12">
     <%= f.text_area :comment, rows:3, placeholder:"Kommentar" %> 
   </div>
 
   <div class="span12">
-    <%= f.submit "Place order", class:"btn btn-primary"%>
+    <%= f.submit "Lever bestilling", class:"btn btn-primary"%>
+    <p>&nbsp;</p>
   </div>
 <% end %>
 <script>
@@ -53,4 +53,3 @@
     format: 'yyyy-mm-dd'
   });
 </script>
-

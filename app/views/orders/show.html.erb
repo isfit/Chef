@@ -1,4 +1,13 @@
-<table class="table span12">
+<p class="btn-group span3 pull-right" >
+  <%= link_to edit_order_path(@order), class:"btn" do %>
+    <i class="icon-pencil"></i> Rediger
+  <%end%>
+  <%= link_to @order, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn" do %>
+    <i class="icon-trash"></i> Slett
+  <% end %>
+</p>
+</p>
+<table class="table span11">
   <tr>
     <th>Leveringsadresse</th>
     <th>Leveringstidspunkt</th>
@@ -9,27 +18,25 @@
     </td>
     <td>
       <h2><%= @order.delivered_at.strftime("%a, %d. %b") %></br>
-      <%= @order.delivered_at.strftime("%H:%M") %></h2>
+        <%= @order.delivered_at.strftime("%H:%M") %></h2>
     </td>
   </tr>
 </table>
 
-<table class="table table-bordered">
+<table class="table span11">
   <tr>
     <th>Totalt antall</th>
     <th><%= @order.total_order_amount %></th>
   </tr>
   <tr>
-    <th>Meal:</th>
-    <th>Amount:</th>
+    <th>Måltid:</th>
+    <th>Mengde:</th>
   </tr>
-  
+
   <% @order.meals.each do |meal| %>
     <tr>
       <td><%= meal.meal_type.title %></td>
       <td><%= meal.amount %></td>
-    <tr>
-  <% end %>
-</table>
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+      <tr>
+      <% end %>
+    </table>
