@@ -7,7 +7,7 @@ set :rvm_type, :user
 require 'bundler/capistrano'
 
 set :application, "mat.isfit.org"
-set :repository,  "git@github.com:isfit/chef"
+set :repository,  "git@github.com:isfit/Chef"
 
 set :scm, :git
 
@@ -31,7 +31,6 @@ namespace :deploy do
   end
   task :symlink_shared, :roles => :app do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-    run "ln -nfs #{shared_path}/config/password.yml #{release_path}/config/password.yml"
   end
 end
 after 'deploy:update_code', 'deploy:symlink_shared'
