@@ -1,0 +1,25 @@
+<h1 class="span12">Måltidstyper</h1>
+<h4 class="span12">Det er ikke mulig å slette måltidstyper under festivalen. Hvis det er nødvendig å deaktivere en måltidstype, <br/>så gi det nytt navn "-----" så skjønner folk at de ikke skal velge det.</h4>
+<table class="table table-hover span12">
+  <tr>
+    <th>Title</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @meal_types.each do |admin_meal_type| %>
+  <tr>
+    <td><%= admin_meal_type.title %></td>
+    <td><%= link_to 'Show', admin_meal_type_path(admin_meal_type) %></td>
+    <td><%= link_to 'Edit', edit_admin_meal_type_path(admin_meal_type) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<div class="span-12">
+  <%= link_to new_admin_meal_type_path, class:"btn btn-success" do %>
+    <i class="icon-plus"></i> Ny måltidstype
+  <% end %>
+</div>
