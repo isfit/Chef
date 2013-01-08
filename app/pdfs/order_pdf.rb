@@ -1,6 +1,6 @@
 class OrderPdf < Prawn::Document
   def initialize(orders, meal_types, date, total)
-    super(margin: 70, page_size: "A4")
+    super(left_margin: 70, right_margin: 70, top_margin:50, bottom_margin:20, page_size: "A4")
     @orders = orders
     @meal_types = meal_types
     @date = Date.parse(date).strftime("%a, %d. %b")
@@ -30,7 +30,7 @@ class OrderPdf < Prawn::Document
       details = [["Leveres til:", "Leveringstidspunkt"], [order.deliver_to, order.delivered_at]]
 
       text_box "#{order.total_order_amount} enheter", :size => 18, :style => :bold, align: :left
-      text "Bestilling ##{order.id}", :size => 16, :style => :italic, align: :right
+      text "Bestilling ##{order.id} - #{page_number.to_s}/#{@orders.count.to_s}", :size => 16, :style => :italic, align: :right
 
       move_down(40)
 
@@ -40,24 +40,24 @@ class OrderPdf < Prawn::Document
       text "Tlf: #{order.user.phone}", :size=>18, :style => :italic
 
       text_box "Leveringstidspunkt:", 
-        :at => [350,645],
+        :at => [350,714],
         :height => 200,
         :width => 200,
         :style => :italic
 
       text_box order.delivered_at.strftime("%a, %d. %b"),
-        :at => [350,630],
+        :at => [350,700],
         :size=>18, :style => :bold,
         :height => 200,
         :width => 200
 
       text_box order.delivered_at.strftime("%H:%M"),
-        :at => [350,600],
+        :at => [350,670],
         :size=>30, :style => :bold,
         :height => 200,
         :width => 200
 
-    horizontal_line 0, 450, :at => 500
+    horizontal_line 0, 450, :at => 570
       move_down(100)
 
       items = [["Maaltid", "Antall"]] +
@@ -75,7 +75,10 @@ class OrderPdf < Prawn::Document
 
       text "Total #{order.total_order_amount}", :size => 16, :style => :bold, :align => :right
 
-      text_box page_number.to_s + "/" + @orders.count.to_s, :at => [430, 20], :size => 16
+      image "#{Rails.root}/app/assets/images/isfit_logo.png", :scale => 0.5, :at => [0,110]
+      text_box "Beverting: hospitality@isfit.org\nHaakon Duus: 908 73 417", :at => [300,30], :size => 10
+      text_box "Transport: transport@isfit.org\nGeir Martin Bakken: 913 14 579", :at => [0,30], :size => 10
+
     end
   end
 end
