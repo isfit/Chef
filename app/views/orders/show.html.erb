@@ -14,6 +14,7 @@
   </tr>
   <tr>
     <td>
+      <h3><%= link_to @order.user.given_name + " " + @order.user.family_name, "http://internal.isfit.org/users/#{@order.user.id}" %></h3>
       <h3><%= simple_format(@order.deliver_to) %></h3>
     </td>
     <td>
