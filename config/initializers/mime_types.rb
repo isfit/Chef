@@ -4,3 +4,6 @@
 # Mime::Type.register "text/richtext", :rtf
 # Mime::Type.register_alias "text/html", :iphone
 Mime::Type.register "application/pdf", :pdf
+
+# https://groups.google.com/forum/#!topic/rubyonrails-security/61bkgvnSGTQ/discussion
+ActionDispatch::ParamsParser::DEFAULT_PARSERS.delete(Mime::XML)
