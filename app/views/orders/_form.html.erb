@@ -28,9 +28,9 @@
     <%= f.text_area :deliver_to, rows:4, placeholder:"Leveringsadresse" %>
   </div>
 
-  <div class="span5">
+  <div class="span4">
     <p>
-    <%= text_field_tag :date, nil, class:"datepicker" %>
+    <%= text_field_tag :date, nil, placeholder:"Leveringsdag",class:"datepicker" %>
     </p>
     <p>
     <%= f.time_select :delivered_at, {minute_step: 15, default: DateTime.new(2013,2,14,12,00)}, class:"input-small"%>

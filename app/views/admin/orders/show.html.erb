@@ -1,4 +1,4 @@
-<div class="span12">
+<div class="span11">
   <h1>Alle bestillinger for <%= params[:id] %></h1>
 
   <div class="btn-group">
@@ -24,23 +24,29 @@
       <br/>
       <table class="table">
         <tr>
-          <th>Delivery to:</th>
-          <th>Delivered at</th>
-          <th></th>
-          <th></th>
-          <th></th>
+          <th>Leveres til:</th>
+          <th>Leveringstidspunkt</th>
+          <th>Bestillingstidspunkt</th>
         </tr>
 
         <% @orders.each do |order| %>
           <tr>
+            <th><%= order.user.given_name + " " + order.user.family_name %></th>
+            <td><%= order.delivered_at.strftime("%a, %d. %b") %></td>
+            <td><%= order.created_at.strftime("%a, %d. %b") %></td>
+          </tr>
+          <tr>
             <td><%= order.deliver_to %></td>
-            <td><%= order.delivered_at %></td>
-            <td><%= link_to 'Show', order %></td>
-            <td><%= link_to 'Edit', edit_order_path(order) %></td>
-            <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Vis', order %> <%= link_to 'Rediger', edit_order_path(order) %></td> <td><%= link_to 'Slett', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <tr>
+            <th></th>
+            <th>Måltid</th>
+            <th>Antall</th>
           </tr>
           <% order.meals.each do |meal| %>
             <tr>
+              <td></td>
               <td><%= meal.meal_type.title %></td>
               <td><%= meal.amount %></td>
             </tr>
