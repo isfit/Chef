@@ -51,11 +51,18 @@ class OrdersController < ApplicationController
     @order.user = current_user
     @order.delivered_at = Date.parse("2013-02-07")
 
-    date = Date.parse("2013-02-07")
-    10.times do
+    dates = ["2013-02-07",
+      "2013-02-08",
+      "2013-02-09",
+      "2013-02-10",
+      "2013-02-12",
+      "2013-02-14",
+      "2013-02-16",
+      "2013-02-17"]
+    dates.each do |date_string|
       o = Order.new
       o.deliver_to = @order.deliver_to
-      date = date+1
+      date = Date.parse(date_string)
       o.delivered_at = date
       o.user = @order.user
       @order.meals.each do |m|
