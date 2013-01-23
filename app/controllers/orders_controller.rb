@@ -49,7 +49,7 @@ class OrdersController < ApplicationController
   def create_mass_order
     @order = Order.new(params[:order])
     @order.user = current_user
-    @order.delivered_at = Date.parse("2013-02-07 12:00")
+    @order.delivered_at = DateTime.parse("2013-02-07 12:00")
 
     dates = ["2013-02-08 12:00",
       "2013-02-09 12:00",
@@ -61,8 +61,9 @@ class OrdersController < ApplicationController
     dates.each do |date_string|
       o = Order.new
       o.deliver_to = @order.deliver_to
-      o.delivered_at = Date.parse(date_string)
+      o.delivered_at = DateTime.parse(date_string)
       o.user = @order.user
+      o.comment = @order.comment
       @order.meals.each do |m|
         a = Meal.new
         a.amount = m.amount
