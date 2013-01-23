@@ -49,21 +49,19 @@ class OrdersController < ApplicationController
   def create_mass_order
     @order = Order.new(params[:order])
     @order.user = current_user
-    @order.delivered_at = Date.parse("2013-02-07")
+    @order.delivered_at = Date.parse("2013-02-07 12:00")
 
-    dates = ["2013-02-07",
-      "2013-02-08",
-      "2013-02-09",
-      "2013-02-10",
-      "2013-02-12",
-      "2013-02-14",
-      "2013-02-16",
-      "2013-02-17"]
+    dates = ["2013-02-08 12:00",
+      "2013-02-09 12:00",
+      "2013-02-10 12:00",
+      "2013-02-12 12:00",
+      "2013-02-14 12:00",
+      "2013-02-16 12:00",
+      "2013-02-17 12:00"]
     dates.each do |date_string|
       o = Order.new
       o.deliver_to = @order.deliver_to
-      date = Date.parse(date_string)
-      o.delivered_at = date
+      o.delivered_at = Date.parse(date_string)
       o.user = @order.user
       @order.meals.each do |m|
         a = Meal.new
