@@ -105,7 +105,7 @@ class OrdersController < ApplicationController
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render json: @order, status: :created, location: @order }
       else
-        format.html { redirect_to action: "new", error: 'Ugyldig bestilling. Husk at bestillinger må sendes inn 24 timer før leveringstidspunkt.' }
+        format.html { redirect_to action: "new", error: 'Ugyldig bestilling. Husk at bestillinger maa sendes inn 24 timer foer leveringstidspunkt.' }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
