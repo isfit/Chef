@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @order = current_user.orders.find(params[:id])
+    @order = find_order(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -85,7 +85,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
-    @order = current_user.orders.find(params[:id])
+    @order = find_order(params[:id])
     params[:date] = @order.delivered_at
     @meal_types = MealType.all.collect {|p| [ p.title, p.id ] }
   end
@@ -114,7 +114,7 @@ class OrdersController < ApplicationController
   # PUT /orders/1
   # PUT /orders/1.json
   def update
-    @order = current_user.orders.find(params[:id])
+    @order = find_order(params[:id])
 
     respond_to do |format|
       if @order.update_attributes(params[:order])
@@ -130,12 +130,21 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
-    @order = current_user.orders.find(params[:id])
+    @order = find_order(params[:id])
+    date = @order.delivered_at.strftime("%Y-%m-%d")
     @order.destroy
 
     respond_to do |format|
-      format.html { redirect_to orders_url }
+      format.html { redirect_to current_user.admin? ? admin_order_path(date) : orders_url }
       format.json { head :no_content }
+    end
+  end
+
+  def find_order(order_id)
+    if current_user.admin?
+      Order.find(params[:id])
+    else
+      current_user.orders.find(params[:id])
     end
   end
 end
