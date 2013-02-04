@@ -8,11 +8,11 @@ class User < ActiveRecord::Base
   has_secure_password
 
   def workshop_leader?
-    groups.include?(Group.find(105))
+    groups.include?(Group.find(105)) || admin?
   end
 
   def admin?
     # IT eller forpleining
-    groups.include?(Group.find(89)) || groups.include?(Group.find(93))
+    groups.include?(Group.find(89)) || groups.include?(Group.find(93)) || groups.include?(Group.find(95))
   end
 end
