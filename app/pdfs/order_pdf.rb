@@ -75,6 +75,9 @@ class OrderPdf < Prawn::Document
 
       text "Total #{order.total_order_amount}", :size => 16, :style => :bold, :align => :right
 
+      move_down(20)
+      text "Kommentar:\n #{order.comment}", :size => 12, :align => :left
+
       image "#{Rails.root}/app/assets/images/isfit_logo.png", :scale => 0.5, :at => [0,110]
       text_box "Beverting: hospitality@isfit.org\nHaakon Duus: 908 73 417", :at => [300,30], :size => 10
       text_box "Transport: transport@isfit.org\nGeir Martin Bakken: 913 14 579", :at => [0,30], :size => 10

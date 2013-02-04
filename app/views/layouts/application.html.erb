@@ -8,19 +8,6 @@
   </head>
   <body>
 
-    <% if flash[:notice] %>
-      <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
-    <% if flash[:error] %>
-      <div class="alert">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <%= flash[:error] %>
-      </div>
-    <% end %>
-
     <% if logged_in? %>
       <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
@@ -28,7 +15,7 @@
             <a class="brand" href="/">Chef</a>
             <ul class="nav">
               <li><%= link_to "Mine bestillinger", orders_path %></li>
-              <% if logged_in? && current_user.workshop_leader? %>
+              <% if logged_in? && current_user.admin? %>
 
                 <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
