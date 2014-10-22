@@ -1,7 +1,7 @@
 <%= form_for @order do |f| %>
   <% if @order.errors.any? %>
-    <div id="error_explanation span12">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+    <div class="alert alert-error" style="margin-left:20px; margin-right:20px; margin-top:55px">
+      <h2><%= @order.errors.count %> feil må rettes opp før orderen blir lagret:</h2>
       <ul>
         <% @order.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -33,7 +33,7 @@
     <%= text_field_tag :date, nil, placeholder:"Leveringsdag",class:"datepicker" %>
     </p>
     <p>
-    <%= f.time_select :delivered_at, {minute_step: 15, default: DateTime.new(2013,2,14,12,00)}, class:"input-small"%>
+    <%= f.time_select :delivered_at, {minute_step: 15, default: DateTime.new(2015,2,14,12,00)}, class:"input-small"%>
     </p>
   </div>
 
@@ -48,8 +48,8 @@
 <% end %>
 <script>
   $('.datepicker').datepicker({
-    startDate:new Date(2013,1,7),
-    endDate:new Date(2013,1,18),
+    startDate:new Date(2015,1,5),
+    endDate:new Date(2015,1,15),
     format: 'yyyy-mm-dd'
   });
 </script>

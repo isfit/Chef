@@ -4,6 +4,9 @@ class Order < ActiveRecord::Base
   has_many :meal_types, through: :meals
   belongs_to :user
   accepts_nested_attributes_for :meals
+  validates_presence_of :deliver_to, :message => "can't be empty"
+
+
 
   def self.to_be_delivered_on(date)
     self.where("delivered_at >= ? AND delivered_at <= ?", date, date+1)

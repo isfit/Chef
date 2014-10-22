@@ -23,16 +23,11 @@ class OrdersController < ApplicationController
   end
 
   # GET /orders/new
-  # GET /orders/new.json
   def new
+    binding.pry
     @order = Order.new
     @order.meals << Meal.new
     @meal_types = MealType.all.collect {|p| [ p.title, p.id ] }
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @order }
-    end
   end
 
   def new_mass_order
@@ -91,7 +86,6 @@ class OrdersController < ApplicationController
   end
 
   # POST /orders
-  # POST /orders.json
   def create
     date = DateTime.parse(params[:date])
     params[:order]["delivered_at(1i)"] = date.year.to_s
@@ -99,15 +93,12 @@ class OrdersController < ApplicationController
     params[:order]["delivered_at(3i)"] = date.mday.to_s
     @order = Order.new(params[:order])
     @order.user = current_user
+    @meal_types = MealType.all.collect {|p| [ p.title, p.id ] }
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render json: @order, status: :created, location: @order }
-      else
-        format.html { redirect_to action: "new", error: 'Ugyldig bestilling. Husk at bestillinger maa sendes inn 24 timer foer leveringstidspunkt.' }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
+    if @order.save
+      redirect_to @order, notice: 'Order was successfully created.'
+    else
+      render :action => 'new'
     end
   end
 
