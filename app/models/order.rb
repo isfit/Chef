@@ -5,6 +5,7 @@ class Order < ActiveRecord::Base
   belongs_to :user
   accepts_nested_attributes_for :meals
   validates_presence_of :deliver_to, :message => "can't be empty"
+  validates_presence_of :delivered_at, :message => "can't be empty"
 
 
 
