@@ -4,6 +4,7 @@ Chef::Application.routes.draw do
   namespace :admin do
     resources :orders
     resources :meal_types
+    resources :locations
   end
   
   match 'login' => 'sessions#new'

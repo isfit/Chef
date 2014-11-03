@@ -13,6 +13,6 @@ class User < ActiveRecord::Base
 
   def admin?
     # IT eller forpleining
-    groups.include?(Group.find(89)) || groups.include?(Group.find(93)) || groups.include?(Group.find(95))
+    groups.include?(Group.find(157)) || groups.include?(Group.find(127))
   end
 end

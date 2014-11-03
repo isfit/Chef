@@ -27,6 +27,7 @@ class OrdersController < ApplicationController
     @order = Order.new
     @order.meals << Meal.new
     @meal_types = MealType.all.collect {|p| [ p.title, p.id ] }
+    @locations = Location.all.collect {|p| [ p.name, p.id ] }
   end
 
   def new_mass_order
@@ -82,6 +83,7 @@ class OrdersController < ApplicationController
     @order = find_order(params[:id])
     params[:date] = @order.delivered_at
     @meal_types = MealType.all.collect {|p| [ p.title, p.id ] }
+    @locations = Location.all.collect {|p| [ p.name, p.id ] }
   end
 
   # POST /orders
@@ -89,6 +91,7 @@ class OrdersController < ApplicationController
     @order = Order.new(params[:order])
     @order.user = current_user
     @meal_types = MealType.all.collect {|p| [ p.title, p.id ] }
+    @locations = Location.all.collect {|p| [ p.name, p.id ] }
 
     if @order.save
       redirect_to @order, notice: 'Order was successfully created.'

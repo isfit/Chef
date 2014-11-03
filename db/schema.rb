@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121031200515) do
+ActiveRecord::Schema.define(:version => 20141029191532) do
 
   create_table "groups", :id => false, :force => true do |t|
     t.integer "id",                             :default => 0, :null => false
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(:version => 20121031200515) do
   create_table "groups_positions", :id => false, :force => true do |t|
     t.integer "group_id"
     t.integer "position_id"
+  end
+
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.text     "address"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "meal_types", :force => true do |t|
@@ -47,8 +54,9 @@ ActiveRecord::Schema.define(:version => 20121031200515) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "user_id"
-    t.string   "deliver_to"
     t.string   "comment"
+    t.text     "deliver_to"
+    t.integer  "location_id"
   end
 
   create_table "positions", :id => false, :force => true do |t|

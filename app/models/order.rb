@@ -1,10 +1,10 @@
 class Order < ActiveRecord::Base
-  attr_accessible :delivered_at, :meals_attributes, :amount, :deliver_to, :comment
+  attr_accessible :delivered_at, :meals_attributes, :amount, :deliver_to, :comment, :location_id
   has_many :meals
   has_many :meal_types, through: :meals
+  belongs_to :location
   belongs_to :user
   accepts_nested_attributes_for :meals
-  validates_presence_of :deliver_to, :message => "can't be empty"
   validates_presence_of :delivered_at, :message => "can't be empty"
 
 
