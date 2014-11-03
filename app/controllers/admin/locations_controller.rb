@@ -35,14 +35,11 @@ class Admin::LocationsController < ApplicationController
   def create
     @location = Location.new(params[:location])
 
-    respond_to do |format|
-      if @meal_type.save
-        format.html { redirect_to locations_path(@location), notice: 'Location was successfully created.' }
+      if @location.save
+        redirect_to admin_locations_path, notice: 'Location was successfully created.'
       else
-        format.html { render action: "new" }
-        format.json { render json: @location.errors, status: :unprocessable_entity }
+        render action: "new"
       end
-    end
   end
 
   def update
@@ -50,7 +47,7 @@ class Admin::LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.update_attributes(params[:location])
-        format.html { redirect_to locations_path(@location), notice: 'Location was successfully updated.' }
+        format.html { redirect_to admin_locations_path, notice: 'Location was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
