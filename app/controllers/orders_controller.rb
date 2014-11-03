@@ -34,6 +34,7 @@ class OrdersController < ApplicationController
     @order = Order.new
     @order.meals << Meal.new
     @meal_types = MealType.all.collect {|p| [ p.title, p.id ] }
+    @locations = Location.all.collect {|p| [ p.name, p.id ] }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,6 +46,7 @@ class OrdersController < ApplicationController
     @order = Order.new(params[:order])
     @order.user = current_user
     @order.delivered_at = DateTime.parse("2013-02-07 12:00")
+    @locations = Location.all.collect {|p| [ p.name, p.id ] }
 
     dates = ["2013-02-08 12:00",
       "2013-02-09 12:00",
