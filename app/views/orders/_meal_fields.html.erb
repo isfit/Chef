@@ -1,4 +1,8 @@
 <div class="control-group controls">
+  <div class="col-md-6" style="padding-left:0px; padding-top: 5px">
   <%= f.text_field :amount, placeholder:"Antall, (1 per person)"%>
+  </div>
+  <div class="col-md-6" style="padding-top: 5px">
   <%= f.select :meal_type_id, @meal_types %>
+  </div>
 </div>

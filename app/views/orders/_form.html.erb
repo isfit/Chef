@@ -1,6 +1,6 @@
 <%= form_for @order do |f| %>
   <% if @order.errors.any? %>
-    <div class="alert alert-error" style="margin-left:20px; margin-right:20px; margin-top:55px">
+    <div class="alert alert-danger" >
       <h2><%= @order.errors.count %> feil må rettes opp før orderen blir lagret:</h2>
       <ul>
         <% @order.errors.full_messages.each do |msg| %>
@@ -9,40 +9,49 @@
       </ul>
     </div>
   <% end %>
-  <p class="span12">Måltid leveres normalt til lunsj, andre tidspunkt kan være mulig.</p>
+  <p class="col-md-12" style="padding-left: 0px">Måltid leveres normalt til lunsj, andre tidspunkt kan være mulig.</p>
+<div class="row">
 
-  <div class="span12">
+
+  <div class="col-md-8" style="padding-right: 0px">
     <h4>Mattyper og mengde</h4>
     <%= f.fields_for :meals do |meal| %>
       <%= render 'meal_fields', f: meal %>
     <% end %>
   </div>
 
-  <p class="span12" >
+  <p class="col-md-8" style="padding-right: 0px">
+
   <%= link_to_add_fields "Legg til enda et måltid", f, :meals %>
   </p>
-
-  <h4 class="span12">Leveringssted og tidspunkt</h4>
-  <div class="span4">
+</div>
+<div class="row">
+  <h4 class="col-md-12">Leveringssted og tidspunkt</h4>
+  <div class="col-md-4">
     <%= f.select :location_id, @locations %>
     <%= f.text_area :deliver_to, rows:4, placeholder:"Spesifikk leveringsadresse (Valgfri)" %>
   </div>
 
-  <div class="span4">
+  <div class="col-md-4">
     <p>
     <%= text_field_tag :date, nil, placeholder:"Leveringsdag",class:"datepicker" %>
     </p>
     <p>
-    <%= f.time_select :delivered_at, {minute_step: 15, default: DateTime.new(2015,2,14,12,00)}, class:"input-small"%>
+    <%= f.time_select :delivered_at, {minute_step: 15, default: DateTime.new(2015,2,14,12,00), :time_separator => ''}, class:"input-small", :style => 'width: 50%;float:left' %>
     </p>
   </div>
+</div>
+<div class="row" style="margin-top: 15px">
+    <div class="col-md-8">
+      <%= f.text_area :comment, rows:3, placeholder:"Kommentar" %>
+    </div>
+</div>
 
-  <div class="span8">
-    <%= f.text_area :comment, rows:3, placeholder:"Kommentar", :class => 'span7' %>
-  </div>
 
-  <div class="span12">
-    <%= f.submit "Lever bestilling", class:"btn btn-primary"%>
+  <div class="col-md-12" style="padding-left: 0px">
+    <p>&nbsp;</p>
+    <%= f.submit "Lever bestilling", class:"btn btn-primary col-md-2"%>
+    <p>&nbsp;</p>
     <p>&nbsp;</p>
   </div>
 <% end %>
