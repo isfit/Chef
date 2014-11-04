@@ -2,7 +2,7 @@ class Admin::OrdersController < ApplicationController
   before_filter :admin_required
 
   def index
-    redirect_to admin_order_path("2013-02-07")
+    redirect_to admin_order_path("2015-02-05")
   end
 
   def show
