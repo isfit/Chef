@@ -36,7 +36,14 @@ class OrderPdf < Prawn::Document
 
       text "Leveres til:", :style => :italic
       text order.user.given_name + " " + order.user.family_name, :size=>18, :style => :bold
-      text order.deliver_to, :size=>18, :style => :bold
+      if !order.location.address.nil?
+        text order.location.name, :size=>18, :style => :bold
+        text order.location.address, :size=>18, :style => :bold
+      end
+      if !order.deliver_to.nil?
+        text order.deliver_to, :size=>18, :style => :bold
+      end
+
       text "Tlf: #{order.user.phone}", :size=>18, :style => :italic
 
       text_box "Leveringstidspunkt:", 

@@ -1,0 +1,27 @@
+<h1 class="span12">Leveringssteder</h1>
+<h4 class="span12">Det er ikke mulig å slette leveringssteder under festivalen. Hvis det er nødvendig å deaktivere et leveringssted, <br/>så gi det nytt navn "-----" så skjønner folk at de ikke skal velge det.</h4>
+<table class="table table-hover span12">
+  <tr>
+    <th>Navn</th>
+    <th>Addresse</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @locations.each do |location| %>
+      <tr>
+        <td><%= location.name %></td>
+        <td><%= location.address %></td>
+        <td><%= link_to 'Edit', edit_admin_location_path(location) %></td>
+      </tr>
+  <% end %>
+</table>
+
+<br />
+<div class="span-12">
+  <%= link_to new_admin_location_path, class:"btn btn-success" do %>
+      <i class="icon-plus"></i> Nytt leveringssted
+  <% end %>
+  <p>&nbsp;</p>
+
+</div>

@@ -45,7 +45,7 @@ class Admin::MealTypesController < ApplicationController
 
     respond_to do |format|
       if @meal_type.save
-        format.html { redirect_to admin_meal_type_path(@meal_type), notice: 'Meal type was successfully created.' }
+        format.html { redirect_to admin_meal_types_path, notice: 'Meal type was successfully created.' }
         format.json { render json: @meal_type, status: :created, location: @meal_type }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class Admin::MealTypesController < ApplicationController
 
     respond_to do |format|
       if @meal_type.update_attributes(params[:meal_type])
-        format.html { redirect_to admin_meal_type_path(@meal_type), notice: 'Meal type was successfully updated.' }
+        format.html { redirect_to admin_meal_types_path, notice: 'Meal type was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -14,7 +14,7 @@
 <tbody>
   <% @orders.each do |order| %>
     <tr>
-      <td><%= link_to simple_format(order.deliver_to), order%></td>
+      <td><%= link_to order.location.name, order%></td>
       <td><%= link_to order.delivered_at.strftime("%a %d. %b, %H:%M"), order %></td>
       <td class="btn-group" >
           <%= link_to edit_order_path(order), class:"btn" do %>
@@ -40,5 +40,6 @@
   <h4>Ingen bestillinger</h4>
   Du har ikke registert noen bestillinger.
   <%= link_to "Bestill mat.", new_order_path %>
+    <p>&nbsp;</p>
 </div>
 <% end %>

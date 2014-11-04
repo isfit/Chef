@@ -9,7 +9,7 @@
       </ul>
     </div>
   <% end %>
-  <p class="span12">Måltid leveres normalt til lønsj, andre tidspunkt kan være mulig.</p>  
+  <p class="span12">Måltid leveres normalt til lunsj, andre tidspunkt kan være mulig.</p>
 
   <div class="span12">
     <h4>Mattyper og mengde</h4>
@@ -23,9 +23,9 @@
   </p>
 
   <h4 class="span12">Leveringssted og tidspunkt</h4>
-
   <div class="span4">
-    <%= f.text_area :deliver_to, rows:4, placeholder:"Leveringsadresse" %>
+    <%= f.select :location_id, @locations %>
+    <%= f.text_area :deliver_to, rows:4, placeholder:"Spesifikk leveringsadresse (Valgfri)" %>
   </div>
 
   <div class="span4">
@@ -37,8 +37,8 @@
     </p>
   </div>
 
-  <div class="span12">
-    <%= f.text_area :comment, rows:3, placeholder:"Kommentar" %> 
+  <div class="span8">
+    <%= f.text_area :comment, rows:3, placeholder:"Kommentar", :class => 'span7' %>
   </div>
 
   <div class="span12">

@@ -11,25 +11,29 @@
     </div>
   <% end %>
 
-  <div class="span12">
-    <%= f.fields_for :meals do |meal| %>
-      <%= render 'meal_fields', f: meal %>
-    <% end %>
-  </div>
+    <div class="span12">
+      <h4>Mattyper og mengde</h4>
+      <%= f.fields_for :meals do |meal| %>
+          <%= render 'meal_fields', f: meal %>
+      <% end %>
+    </div>
 
-  <p class="span12" >
-  <%= link_to_add_fields "Legg til enda en mattype", f, :meals %>
-  </p>
+    <p class="span12" >
+      <%= link_to_add_fields "Legg til enda et måltid", f, :meals %>
+    </p>
 
-  <div class="span4">
-    <%= f.text_area :deliver_to, rows:3, placeholder:"Leveringsadresse" %>
-  </div>
+    <h4 class="span12">Leveringssted og tidspunkt</h4>
+    <div class="span4">
+      <%= f.select :location_id, @locations %>
+      <%= f.text_area :deliver_to, rows:4, placeholder:"Spesifikk leveringsadresse (Valgfri)" %>
+    </div>
 
-  <div class="span5">
-    <%= f.text_area :comment, rows:3, placeholder:"Kommentar" %> 
-  </div>
+    <div class="span8">
+      <%= f.text_area :comment, rows:3, placeholder:"Kommentar", :class => 'span5' %>
+    </div>
 
-  <div class="span12">
-    <%= f.submit "Place order", class:"btn btn-primary"%>
-  </div>
+    <div class="span12">
+      <%= f.submit "Lever bestilling", class:"btn btn-primary"%>
+      <p>&nbsp;</p>
+    </div>
 <% end %>
