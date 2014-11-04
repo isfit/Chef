@@ -67,5 +67,28 @@ module Chef
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    #Festival dates
+    config.festival_dates = ['2015-02-05',
+                             '2015-02-06',
+                             '2015-02-07',
+                             '2015-02-08',
+                             '2015-02-09',
+                             '2015-02-10',
+                             '2015-02-11',
+                             '2015-02-12',
+                             '2015-02-13',
+                             '2015-02-14',
+                             '2015-02-15']
+
+    #Workshop dates
+    config.workshop_dates = ['2015-02-06 12:00',
+                             '2015-02-07 12:00',
+                             '2015-02-08 12:00',
+                             '2015-02-09 12:00',
+                             '2015-02-11 12:00',
+                             '2015-02-12 12:00',
+                             '2015-02-14 12:00',
+                             '2015-02-15 12:00']
   end
 end

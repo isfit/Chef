@@ -1,15 +1,14 @@
 <%= form_for(@order, url: create_mass_order_path) do |f| %>
-  <% if @order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
-      <ul>
-      <% @order.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <% if @order.errors.any? %>
+        <div class="alert alert-error" style="margin-left:20px; margin-right:20px; margin-top:100px">
+          <h2><%= @order.errors.count %> feil må rettes opp før orderen blir lagret:</h2>
+          <ul>
+            <% @order.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
     <div class="span12">
       <h4>Mattyper og mengde</h4>

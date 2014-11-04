@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Chef</title>
+    <title>Mat</title>
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -12,7 +12,7 @@
       <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
           <div class="container">
-            <a class="brand" href="/">Chef</a>
+            <a class="brand" href="/">Mat</a>
             <ul class="nav">
               <li><%= link_to "Mine bestillinger", orders_path %></li>
               <% if logged_in? && current_user.admin? %>
@@ -23,17 +23,9 @@
                   <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                  <li><%= link_to "2013-02-07", admin_order_path("2013-02-07") %></li>
-                  <li><%= link_to "2013-02-08", admin_order_path("2013-02-08") %></li>
-                  <li><%= link_to "2013-02-09", admin_order_path("2013-02-09") %></li>
-                  <li><%= link_to "2013-02-10", admin_order_path("2013-02-10") %></li>
-                  <li><%= link_to "2013-02-11", admin_order_path("2013-02-11") %></li>
-                  <li><%= link_to "2013-02-12", admin_order_path("2013-02-12") %></li>
-                  <li><%= link_to "2013-02-13", admin_order_path("2013-02-13") %></li>
-                  <li><%= link_to "2013-02-14", admin_order_path("2013-02-14") %></li>
-                  <li><%= link_to "2013-02-15", admin_order_path("2013-02-15") %></li>
-                  <li><%= link_to "2013-02-16", admin_order_path("2013-02-16") %></li>
-                  <li><%= link_to "2013-02-17", admin_order_path("2013-02-17") %></li>
+                  <% Rails.application.config.festival_dates.each do |festival_date| %>
+                    <li><%= link_to festival_date, admin_order_path(festival_date) %></li>
+                  <% end %>
                 </ul>
 
                 <li><%= link_to "Måltidstyper", admin_meal_types_path %></li>

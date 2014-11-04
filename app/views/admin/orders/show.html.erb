@@ -15,11 +15,13 @@
       <th>Amount</th>
     </tr>
     <% @meal_types.each do |meal| %>
-      <tr>
-        <td><%= meal[0] %></td>
-        <td><%= meal[1] %></td>
-        <tr>
+        <% if meal[1] > 0 %>
+            <tr>
+                <td><%= meal[0] %></td>
+                <td><%= meal[1] %></td>
+            </tr>
         <% end %>
+     <% end %>
       </table>
       <br/>
       <table class="table">
@@ -36,7 +38,7 @@
             <td><%= order.created_at.strftime("%a, %d. %b") %></td>
           </tr>
           <tr>
-            <td><%= order.deliver_to %></td>
+            <td><%= order.location.name %> <br /> <%= order.location.address %> <br /> <%= order.deliver_to %></td>
             <td><%= link_to 'Vis', order %> <%= link_to 'Rediger', edit_order_path(order) %></td> <td><%= link_to 'Slett', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
           <tr>

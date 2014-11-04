@@ -45,19 +45,16 @@ class OrdersController < ApplicationController
   def create_mass_order
     @order = Order.new(params[:order])
     @order.user = current_user
-    @order.delivered_at = DateTime.parse("2013-02-07 12:00")
+    dates = Rails.application.config.workshop_dates
+    @order.delivered_at = DateTime.parse(dates[0])
+    @meal_types = MealType.all.collect {|p| [ p.title, p.id ] }
     @locations = Location.all.collect {|p| [ p.name, p.id ] }
+    orders_saved = false
 
-    dates = ["2013-02-08 12:00",
-      "2013-02-09 12:00",
-      "2013-02-10 12:00",
-      "2013-02-12 12:00",
-      "2013-02-14 12:00",
-      "2013-02-16 12:00",
-      "2013-02-17 12:00"]
     dates.each do |date_string|
       o = Order.new
       o.deliver_to = @order.deliver_to
+      o.location = @order.location
       o.delivered_at = DateTime.parse(date_string)
       o.user = @order.user
       o.comment = @order.comment
@@ -67,17 +64,20 @@ class OrdersController < ApplicationController
         a.meal_type_id = m.meal_type_id
         o.meals << a
       end
-      o.save
-    end
-
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to orders_path, notice: 'Order was successfully created.' }
+      if o.save
+        orders_saved = true
       else
-        format.html { render action: "new" }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+        orders_saved = false
+        @order.errors[:base] << "Ett av feltene inneholder ugyldig data"
+        break
       end
     end
+
+      if orders_saved
+        redirect_to orders_path, notice: 'Ordrer opprettet'
+      else
+        render action: "new_mass_order"
+      end
   end
 
   # GET /orders/1/edit
