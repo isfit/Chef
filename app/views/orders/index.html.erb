@@ -1,10 +1,10 @@
-<h1 class="span12">Mine bestillinger</h1>
+<h1 class="col-md-12">Mine bestillinger</h1>
 <% unless @orders.count == 0 %>
-<table class="table table-hover span12">
+<table class="table table-hover col-md-12">
   <thead>
   <tr>
-    <th>Leveringsadresse:</th>
-    <th>Leveringsdag:</th>
+    <th></th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,18 +13,29 @@
 
 <tbody>
   <% @orders.each do |order| %>
+    <th><h2><%= link_to 'Ordre# ' + order.id.to_s, order %></h2></th>
+    <tr><td></td></tr>
+    <th>Leveringsadresse:</th>
+    <th>Leveringsdag:</th>
     <tr>
       <td><%= link_to order.location.name, order%></td>
       <td><%= link_to order.delivered_at.strftime("%a %d. %b, %H:%M"), order %></td>
       <td class="btn-group" >
           <%= link_to edit_order_path(order), class:"btn" do %>
-            <i class="icon-pencil"></i>
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-pencil"></span>
+            </button>
           <%end%>
           <%= link_to order, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn" do %>
-            <i class="icon-trash"></i>
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
           <% end %>
       </td>
     </tr>
+    <th></th>
+    <th>Måltid</th>
+    <th>Antall</th>
     <% order.meals.each do |meal| %>
       <tr>
         <td></td>

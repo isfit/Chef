@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mat</title>
+    <title>ISFiT Mat</title>
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -12,7 +12,7 @@
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-inner">
           <div class="container-fluid">
-            <a class="navbar-brand" href="/">Mat</a>
+            <a class="navbar-brand" href="/">ISFiT Mat</a>
             <ul class="nav navbar-nav">
               <li><%= link_to "Mine bestillinger", orders_path %></li>
               <% if logged_in? && current_user.admin? %>
