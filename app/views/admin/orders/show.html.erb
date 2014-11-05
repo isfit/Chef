@@ -2,7 +2,7 @@
   <h1>Alle bestillinger for <%= params[:id] %></h1>
 
   <div class="btn-group">
-    <%= link_to admin_order_path(id: params[:id], format: :pdf), class:"btn btn-primary" do %>
+    <%= link_to admin_order_path(id: params[:id], format: :pdf, :location => nil), class:"btn btn-primary" do %>
       <i class="glyphicon glyphicon-print"></i> Generer ordrebilag for utskrift
     <% end %>
   </div>
@@ -33,8 +33,15 @@
         <% end %>
   </ul>
   <div class="panel panel-default tab-content" style="border-top: 0px">
-    <% @locations.each do |location| %>
-    <div class="panel-body tab-pane active" id="<%= location.name %>">
+    <% @locations.each_with_index do |location,i| %>
+        <% if i == 0 %>
+                <div class="panel-body tab-pane active" id="<%= location.name %>">
+            <% else %>
+                <div class="panel-body tab-pane" id="<%= location.name %>">
+        <% end %>
+        <%= link_to admin_order_path(id: params[:id], format: :pdf, :location => location.name), class:"btn btn-primary" do %>
+            <i class="glyphicon glyphicon-print"></i> Generer ordrebilag for utskrift
+        <% end %>
       <table class="table">
         <tr>
           <th>Leveres til:</th>
@@ -74,3 +81,4 @@
 
       <br/>
     </div>
+</div>
