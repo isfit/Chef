@@ -1,86 +1,75 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ISFiT Mat</title>
-    <%= stylesheet_link_tag    "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
+<head>
+  <title>ISFiT Mat</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% if logged_in? %>
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">ISFiT Mat</a>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Mine bestillinger", orders_path %></li>
+          <% if logged_in? && current_user.admin? %>
 
-    <% if logged_in? %>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="navbar-inner">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="/">ISFiT Mat</a>
-            <ul class="nav navbar-nav">
-              <li><%= link_to "Mine bestillinger", orders_path %></li>
-              <% if logged_in? && current_user.admin? %>
-
-                <li class="dropdown">
+              <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   Ordreoversikt
                   <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                   <% Rails.application.config.festival_dates.each do |festival_date| %>
-                    <li><%= link_to festival_date, admin_order_path(festival_date) %></li>
+                      <li><%= link_to festival_date, admin_order_path(festival_date) %></li>
                   <% end %>
-                  </li>
-                </ul>
+                </ul> <!-- dropdown-menu -->
+              </li> <!-- dropdown -->
+              <li><%= link_to "Måltidstyper", admin_meal_types_path %></li>
+              <li><%= link_to 'Leveringssteder', admin_locations_path %></li>
+          <% end %>
+        </ul> <!-- nav navbar-nav -->
+        <%= link_to new_order_path, class:"btn btn-success navbar-btn navbar-right" do %>
+            <span class="glyphicon glyphicon-plus"></span> Ny bestilling
+        <% end %>
+        <% if logged_in? && current_user.workshop_leader? %>
+            <%= link_to new_mass_order_path, class:"btn btn-primary navbar-btn navbar-right" do %>
+                <span class="glyphicon glyphicon-plus"></span> Massebestilling
+            <% end %>
+        <% end %>
+      </div> <!-- container-fluid -->
+    </div> <!-- navbar navbar-default -->
+<% end %>
 
-                <li><%= link_to "Måltidstyper", admin_meal_types_path %></li>
-
-                <li><%= link_to 'Leveringssteder', admin_locations_path %></li>
-              <% end %>
-            </ul>
-
-
-
-
-              <%= link_to new_order_path, class:"btn btn-success navbar-btn navbar-right" do %>
-                  <span class="glyphicon glyphicon-plus"></span> Ny bestilling
-              <% end %>
-
-              <% if logged_in? && current_user.workshop_leader? %>
-                  <%= link_to new_mass_order_path, class:"btn btn-primary navbar-btn navbar-right" do %>
-                      <span class="glyphicon glyphicon-plus"></span> Massebestilling
-                  <% end %>
-              <% end %>
-
-          </div>
-        </div>
-      </div>
-    <% end %>
-
-    <% if flash[:notice] %>
-      <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
-    <% if flash[:error] %>
-      <div class="alert">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <%= flash[:error] %>
-      </div>
-    <% end %>
-
-    <div class="container body">
-      <%= yield %>
+<% if flash[:notice] %>
+    <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <%= flash[:notice] %>
     </div>
+<% end %>
+<% if flash[:error] %>
+    <div class="alert">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <%= flash[:error] %>
+    </div>
+<% end %>
+
+<div class="container body">
+  <%= yield %>
+</div>
 <script type="text/javascript">
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-18016792-8']);
-  _gaq.push(['_trackPageview']);
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18016792-8']);
+    _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
 
 </script>
-  </body>
+</body>
 </html>
