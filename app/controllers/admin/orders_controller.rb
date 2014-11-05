@@ -7,7 +7,7 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @orders = Order.to_be_delivered_on(Date.parse(params[:id]))
-
+    @locations = Location.all
     @total = 0
     @meal_types = MealType.all.map do |m|
       tot = m.amount_ordered_for_day(Date.parse(params[:id]))

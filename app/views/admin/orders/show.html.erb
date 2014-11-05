@@ -23,36 +23,54 @@
         <% end %>
      <% end %>
       </table>
-      <br/>
+  <ul class="nav nav-tabs" role="tablist" id="tab">
+    <% @locations.each_with_index do |location,i| %>
+       <% if i == 0 %>
+        <li class="active"><a href="#<%= location.name %>" role="tab" data-toggle="tab"><%= location.name %></a></li>
+       <% else %>
+        <li><a href="#<%= location.name %>" role="tab" data-toggle="tab"><%= location.name %></a></li>
+       <% end %>
+        <% end %>
+  </ul>
+  <div class="panel panel-default tab-content" style="border-top: 0px">
+    <% @locations.each do |location| %>
+    <div class="panel-body tab-pane active" id="<%= location.name %>">
       <table class="table">
         <tr>
           <th>Leveres til:</th>
           <th>Leveringstidspunkt</th>
           <th>Bestillingstidspunkt</th>
         </tr>
-
         <% @orders.each do |order| %>
-          <tr>
-            <th><%= order.user.given_name + " " + order.user.family_name %></th>
-            <td><%= order.delivered_at.strftime("%a, %d. %b") %></td>
-            <td><%= order.created_at.strftime("%a, %d. %b") %></td>
-          </tr>
-          <tr>
-            <td><%= order.location.name %> <br /> <%= order.location.address %> <br /> <%= order.deliver_to %></td>
-            <td><%= link_to 'Vis', order %> <%= link_to 'Rediger', edit_order_path(order) %></td> <td><%= link_to 'Slett', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-          <tr>
-            <th></th>
-            <th>Måltid</th>
-            <th>Antall</th>
-          </tr>
-          <% order.meals.each do |meal| %>
-            <tr>
-              <td></td>
-              <td><%= meal.meal_type.title %></td>
-              <td><%= meal.amount %></td>
-            </tr>
+          <% if order.location.name == location.name %>
+                <tr>
+                  <th><%= order.user.given_name + " " + order.user.family_name %></th>
+                  <td><%= order.delivered_at.strftime("%a, %d. %b") %></td>
+                  <td><%= order.created_at.strftime("%a, %d. %b") %></td>
+                </tr>
+                <tr>
+                  <td><%= order.location.name %> <br /> <%= order.location.address %> <br /> <%= order.deliver_to %></td>
+                  <td><%= link_to 'Vis', order %> <%= link_to 'Rediger', edit_order_path(order) %></td> <td><%= link_to 'Slett', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <th>Måltid</th>
+                  <th>Antall</th>
+                </tr>
+                <% order.meals.each do |meal| %>
+                    <tr>
+                      <td></td>
+                      <td><%= meal.meal_type.title %></td>
+                      <td><%= meal.amount %></td>
+                    </tr>
+                <% end %>
           <% end %>
         <% end %>
       </table>
+    </div>
+    <% end %>
+
+    </div>
+
+      <br/>
     </div>
