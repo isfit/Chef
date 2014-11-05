@@ -3,7 +3,7 @@
 
   <div class="btn-group">
     <%= link_to admin_order_path(id: params[:id], format: :pdf, :location => nil), class:"btn btn-primary" do %>
-      <i class="glyphicon glyphicon-print"></i> Generer ordrebilag for utskrift
+      <i class="glyphicon glyphicon-print"></i> Generer ordrebilag for denne dagen
     <% end %>
   </div>
 
@@ -40,7 +40,7 @@
                 <div class="panel-body tab-pane" id="<%= location.name %>">
         <% end %>
         <%= link_to admin_order_path(id: params[:id], format: :pdf, :location => location.name), class:"btn btn-primary" do %>
-            <i class="glyphicon glyphicon-print"></i> Generer ordrebilag for utskrift
+            <i class="glyphicon glyphicon-print"></i> Generer ordrebilag for denne lokasjonen
         <% end %>
       <table class="table">
         <tr>
