@@ -10,18 +10,24 @@
           </ul>
         </div>
     <% end %>
-
-    <div class="span12">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+<div class="row">
+  <div class="col-md-4">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <%= f.label :address %>
+    <%= f.text_area :address, rows:3 %>
+  </div>
+</div>
+    <div class="row">
+      <div class="actions col-md-4">
+        <%= f.submit class:"btn btn-primary col-md-6"%>
+      </div>
     </div>
-    <div class="span12">
-      <%= f.label :address %>
-      <%= f.text_area :address, rows:3 %>
-    </div>
-
-    <div class="span12">
-      <%= f.submit class:"btn btn-primary"%>
-      <p>&nbsp;</p>
-    </div>
+    <p>
+      &nbsp;
+    </p>
 <% end %>
