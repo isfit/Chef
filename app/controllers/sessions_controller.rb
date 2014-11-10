@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by_username(params[:username])
-    if user && user.authenticate(params[:password])
+    if user && !user.password_digest.nil? && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to_target_or_default root_url, :notice => "Logget inn."
     elsif user
