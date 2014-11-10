@@ -26,9 +26,9 @@
   <ul class="nav nav-tabs" role="tablist" id="tab">
     <% @locations.each_with_index do |location,i| %>
        <% if i == 0 %>
-        <li class="active"><a href="#<%= location.name %>" role="tab" data-toggle="tab"><%= location.name %></a></li>
+        <li class="active"><a href="#<%= location.name %>" role="tab" data-toggle="tab"><%= location.name + ' (' + @orders.orders_by_location(location.id).count.to_s + ')'%></a></li>
        <% else %>
-        <li><a href="#<%= location.name %>" role="tab" data-toggle="tab"><%= location.name %></a></li>
+        <li><a href="#<%= location.name %>" role="tab" data-toggle="tab"><%= location.name + ' (' + @orders.orders_by_location(location.id).count.to_s + ')'%></a></li>
        <% end %>
         <% end %>
   </ul>
@@ -49,7 +49,7 @@
           <th>Bestillingstidspunkt</th>
         </tr>
         <% @orders.each do |order| %>
-          <% if order.location.name == location.name %>
+          <% if order.location && order.location.name == location.name %>
                 <tr>
                   <th><%= order.user.given_name + " " + order.user.family_name %></th>
                   <td><%= order.delivered_at.strftime("%a, %d. %b") %></td>
