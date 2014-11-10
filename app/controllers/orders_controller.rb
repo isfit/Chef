@@ -96,7 +96,7 @@ class OrdersController < ApplicationController
     @locations = Location.all.collect {|p| [ p.name, p.id ] }
 
     if @order.save
-      redirect_to @order, notice: 'Order was successfully created.'
+      redirect_to @order, notice: 'Ordre ble opprettet.'
     else
       render :action => 'new'
     end
@@ -109,7 +109,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.update_attributes(params[:order])
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to @order, notice: 'Ordre ble oppdatert.' }
         format.json { head :no_content }
       else
         format.html { redirect_to action: "edit", error: "Ugyldige endringer"  }
@@ -126,7 +126,7 @@ class OrdersController < ApplicationController
     @order.destroy
 
     respond_to do |format|
-      format.html { redirect_to current_user.admin? ? admin_order_path(date) : orders_url }
+      format.html { redirect_to orders_url, notice: 'Ordre ble slettet' }
       format.json { head :no_content }
     end
   end

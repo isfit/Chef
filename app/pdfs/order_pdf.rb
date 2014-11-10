@@ -1,15 +1,31 @@
 class OrderPdf < Prawn::Document
-  def initialize(orders, meal_types, date, total)
+  def initialize(orders, meal_types, date, total, location)
     super(left_margin: 70, right_margin: 70, top_margin:50, bottom_margin:20, page_size: "A4")
-    @orders = orders
+    if(location.nil?)
+      @orders = orders
+    else
+      @orders = []
+      @total = 0
+      orders.each do |order|
+        if order.location.name == location
+          @orders << order
+        end
+      end
+    end
+
     @meal_types = meal_types
     @date = Date.parse(date).strftime("%a, %d. %b")
     @total = total
-    generate_orders
+    generate_orders(location)
   end
 
-  def generate_orders
-    text "Oversikt for #{@date}", :size => 30, :style => :bold
+  def generate_orders(location)
+    if location.nil?
+      text "Oversikt for #{@date} til alle destinasjoner", :size => 30, :style => :bold
+    else
+      text "Oversikt for #{@date} til #{location}", :size => 30, :style => :bold
+    end
+
 
     move_down(30)
 

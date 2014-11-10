@@ -8,18 +8,18 @@ class SessionsController < ApplicationController
     user = User.find_by_username(params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to_target_or_default root_url, :notice => "Logged in successfully."
+      redirect_to_target_or_default root_url, :notice => "Logget inn."
     elsif user
-      flash.now[:error] = "Not authorized to login."
+      flash.now[:error] = "Ikke autorisert for innlogging."
       render :action => 'new'
     else
-      flash.now[:error] = "Invalid login or password."
+      flash.now[:error] = "Ugyldig brukernavn eller passord."
       render :action => 'new'
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to 'sessions#new', :notice => "You have been logged out."
+    redirect_to 'sessions#new', :notice => "Logget ut."
   end
 end

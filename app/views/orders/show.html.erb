@@ -1,12 +1,13 @@
 <p class="btn-group span3 pull-right" >
   <%= link_to edit_order_path(@order), class:"btn" do %>
-    <i class="icon-pencil"></i> Rediger
+    <i class="glyphicon glyphicon-pencil"></i> Rediger
   <%end%>
   <%= link_to @order, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn" do %>
-    <i class="icon-trash"></i> Slett
+    <i class="glyphicon glyphicon-trash"></i> Slett
   <% end %>
 </p>
 </p>
+<h1>Ordre# <%= @order.id %></h1>
 <table class="table span11">
   <tr>
     <th>Leveringsadresse</th>

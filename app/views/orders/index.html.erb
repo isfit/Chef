@@ -13,6 +13,9 @@
 
 <tbody>
   <% @orders.each do |order| %>
+    <% if order.location.nil? %>
+        <% next %>
+    <% end %>
     <th><h2><%= link_to 'Ordre# ' + order.id.to_s, order %></h2></th>
     <tr><td></td></tr>
     <th>Leveringsadresse:</th>

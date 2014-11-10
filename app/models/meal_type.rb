@@ -8,6 +8,16 @@ class MealType < ActiveRecord::Base
     meals.where(order_id: o).sum(:amount)
   end
 
+  def amount_ordered_for_day_by_location(date,location)
+    o = Order.to_be_delivered_on(date)
+    o2 = []
+    o.each do |order|
+      if order.location.name == location
+        o2 << order
+      end
+    end
+    meals.where(order_id: o2).sum(:amount)
+  end
   def amount_sum
     meals.sum(:amount)
   end

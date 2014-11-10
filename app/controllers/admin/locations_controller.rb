@@ -36,7 +36,7 @@ class Admin::LocationsController < ApplicationController
     @location = Location.new(params[:location])
 
       if @location.save
-        redirect_to admin_locations_path, notice: 'Location was successfully created.'
+        redirect_to admin_locations_path, notice: 'Leveringssted ble lagt til'
       else
         render action: "new"
       end
@@ -47,7 +47,7 @@ class Admin::LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.update_attributes(params[:location])
-        format.html { redirect_to admin_locations_path, notice: 'Location was successfully updated.' }
+        format.html { redirect_to admin_locations_path, notice: 'Leveringssted ble lagt til.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
