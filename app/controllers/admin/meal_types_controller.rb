@@ -26,7 +26,6 @@ class Admin::MealTypesController < ApplicationController
   # GET /meal_types/new.json
   def new
     @meal_type = MealType.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @meal_type }
