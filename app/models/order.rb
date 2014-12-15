@@ -17,4 +17,8 @@ class Order < ActiveRecord::Base
     meals.sum(:amount)
   end
 
+  def self.orders_by_location(location_id)
+    self.where("location_id = ?",location_id)
+  end
+
 end

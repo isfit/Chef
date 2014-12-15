@@ -11,8 +11,8 @@
 <% @meal_types.each do |admin_meal_type| %>
   <tr>
     <td><%= admin_meal_type.title %></td>
-    <td><%= link_to 'Show', admin_meal_type_path(admin_meal_type) %></td>
-    <td><%= link_to 'Edit', edit_admin_meal_type_path(admin_meal_type) %></td>
+    <td><%= link_to 'Vis', admin_meal_type_path(admin_meal_type) %></td>
+    <td><%= link_to 'Rediger', edit_admin_meal_type_path(admin_meal_type) %></td>
   </tr>
 <% end %>
 </table>
