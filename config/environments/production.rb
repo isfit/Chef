@@ -61,12 +61,14 @@ Chef::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.middleware.use ExceptionNotifier,
+  config.middleware.use ExceptionNotification::Rack,
                         :ignore_exceptions => ['CanCan::AccessDenied'] + ExceptionNotifier.ignored_exceptions,
                         :ignore_crawlers => %w{Googlebot bingbot},
-                          :email_prefix => "[Exception in internal.isfit.org] ",
-                          :sender_address => %{"Exceptional bot" <exceptional@isfit.org>},
-                          :exception_recipients => %w{thomagje@isfit.org}
+                        :email => {
+                            :email_prefix => "[Exception in internal.isfit.org] ",
+                            :sender_address => %{"Exceptional bot" <exceptional@isfit.org>},
+                            :exception_recipients => %w{exceptional@isfit.org}
+                        }
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
