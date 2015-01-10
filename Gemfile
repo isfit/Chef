@@ -12,6 +12,7 @@ gem 'pry'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'therubyracer'
+gem 'exception_notification', '~> 4.0.1'
 
 # Gems used only for assets and not required
 # in production environments by default.
