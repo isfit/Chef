@@ -75,7 +75,7 @@ Chef::Application.configure do
                         :email => {
                             :email_prefix => "[Exception in internal.isfit.org] ",
                             :sender_address => %{"Exceptional bot" <exceptional@isfit.org>},
-                            :exception_recipients => %w{exceptional@isfit.org}
+                            :exception_recipients => %w{thomagje@isfit.org}
                         }
 
   # Log the query plan for queries taking more than this (works
