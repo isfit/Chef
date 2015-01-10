@@ -11,6 +11,7 @@ gem 'newrelic_rpm'
 gem 'pry'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'therubyracer'
 
 # Gems used only for assets and not required
 # in production environments by default.
