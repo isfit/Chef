@@ -90,6 +90,10 @@ class OrdersController < ApplicationController
 
   # POST /orders
   def create
+    date = DateTime.parse(params[:date])
+    params[:order]["delivered_at(1i)"] = date.year.to_s
+    params[:order]["delivered_at(2i)"] = date.mon.to_s
+    params[:order]["delivered_at(3i)"] = date.mday.to_s
     @order = Order.new(params[:order])
     @order.user = current_user
     @meal_types = MealType.all.collect {|p| [ p.title, p.id ] }
