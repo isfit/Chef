@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   has_secure_password
 
   def workshop_leader?
-    groups.include?(Group.find(130)) || admin? #|| self == User.find(940)
+    #Workshopleder eller sekreteriatet
+    groups.include?(Group.find(130)) || groups.include?(Group.find(158)) || admin? #|| self == User.find(940)
   end
 
   def admin?
