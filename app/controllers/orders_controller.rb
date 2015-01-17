@@ -90,6 +90,15 @@ class OrdersController < ApplicationController
 
   # POST /orders
   def create
+    if(params[:date].blank?)
+      @order = Order.new(params[:order])
+      @order.user = current_user
+      @meal_types = MealType.all.collect {|p| [ p.title, p.id ] }
+      @locations = Location.all.collect {|p| [ p.name, p.id ] }
+      @order.errors[:base] << "Ugyldig dato"
+      render :action => 'new'
+      return
+    end
     date = DateTime.parse(params[:date])
     params[:order]["delivered_at(1i)"] = date.year.to_s
     params[:order]["delivered_at(2i)"] = date.mon.to_s
