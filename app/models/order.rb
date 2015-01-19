@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  attr_accessible :delivered_at, :meals_attributes, :amount, :deliver_to, :comment, :location_id
+  attr_accessible :delivered_at, :meals_attributes, :amount, :deliver_to, :comment, :location_id, :workshop_name
   has_many :meals
   has_many :meal_types, through: :meals
   belongs_to :location

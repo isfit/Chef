@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141029191532) do
+ActiveRecord::Schema.define(:version => 20150119180733) do
 
   create_table "groups", :id => false, :force => true do |t|
     t.integer "id",                             :default => 0, :null => false
@@ -51,12 +51,13 @@ ActiveRecord::Schema.define(:version => 20141029191532) do
 
   create_table "orders", :force => true do |t|
     t.datetime "delivered_at"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "user_id"
     t.string   "comment"
     t.text     "deliver_to"
     t.integer  "location_id"
+    t.string   "workshop_name"
   end
 
   create_table "positions", :id => false, :force => true do |t|
