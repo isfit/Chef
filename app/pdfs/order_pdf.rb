@@ -108,7 +108,7 @@ class OrderPdf < Prawn::Document
       move_down(20)
       text "Kommentar:\n #{order.comment}", :size => 12, :align => :left
 
-      image "#{Rails.root}/app/assets/images/isfit_logo.png", :scale => 0.5, :at => [0,110]
+      image "#{Rails.root}/app/assets/images/isfit_logo2015.png", :scale => 0.5, :at => [0,110]
       text_box "Velferd: board.hospitality@isfit.org\nKatrine Listau: 957 59 755", :at => [300,30], :size => 10
       text_box "Transport: transport@isfit.org\nKenneth Eggan: 473 33 637", :at => [0,30], :size => 10
 
