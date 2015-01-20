@@ -53,7 +53,9 @@
   <div class="alert alert-info col-md-12">
   <h4>Ingen bestillinger</h4>
   Du har ikke registert noen bestillinger.
+    <% if logged_in? && current_user.regular_user? %>
   <%= link_to "Bestill mat.", new_order_path %>
+        <% end %>
     <p>&nbsp;</p>
 </div>
 <% end %>

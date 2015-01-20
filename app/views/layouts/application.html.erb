@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if logged_in? %>
+<% if logged_in? && current_user.regular_user? %>
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">ISFiT Mat</a>
