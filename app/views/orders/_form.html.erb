@@ -39,6 +39,19 @@
     <p>
     <%= f.time_select :delivered_at, {minute_step: 15, default: DateTime.new(2015,2,14,12,00), :time_separator => ''}, class:"input-small", :style => 'width: 50%;float:left' %>
     </p>
+    <br />
+    <p>
+      <%= f.text_field :workshop_name, :placeholder => "Workshopnavn (Bare for WOKer)", :style => 'margin-top: 27px' %>
+    </p>
+  </div>
+  <div class="col-md-4">
+    <div class="well">
+      <h4>Bestillingsinfo</h4>
+      Lunsj serveres i tidsrommet kl 12-13<br />
+      Middag serveres i tidsrommet kl 17-19<br />
+      Mat må bestilles senest <b>kl 12 dagen før</b> levering
+    </div>
+
   </div>
 </div>
 <div class="row" style="margin-top: 15px">

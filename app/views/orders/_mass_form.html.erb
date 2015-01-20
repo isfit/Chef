@@ -29,6 +29,11 @@
         <%= f.select :location_id, @locations %>
         <%= f.text_area :deliver_to, rows:4, placeholder:"Spesifikk leveringsadresse (Valgfri)" %>
       </div>
+      <div class="col-md-4">
+        <p>
+          <%= f.text_field :workshop_name, :placeholder => "Workshopnavn (Bare for WOKer)" %>
+        </p>
+      </div>
     </div>
     <div class="row" style="margin-top: 15px">
       <div class="col-md-8">
