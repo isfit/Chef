@@ -73,7 +73,7 @@ Chef::Application.configure do
                         :ignore_exceptions => ['CanCan::AccessDenied'] + ExceptionNotifier.ignored_exceptions,
                         :ignore_crawlers => %w{Googlebot bingbot},
                         :email => {
-                            :email_prefix => "[Exception in internal.isfit.org] ",
+                            :email_prefix => "[Exception in mat.isfit.org] ",
                             :sender_address => %{"Exceptional bot" <exceptional@isfit.org>},
                             :exception_recipients => %w{exceptional@isfit.org thomagje@isfit.org}
                         }
