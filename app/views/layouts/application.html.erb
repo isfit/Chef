@@ -28,8 +28,22 @@
               </li> <!-- dropdown -->
               <li><%= link_to "Måltidstyper", admin_meal_types_path %></li>
               <li><%= link_to 'Leveringssteder', admin_locations_path %></li>
+
           <% end %>
         </ul> <!-- nav navbar-nav -->
+        <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                 <%= current_user.given_name %>
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                  <li>
+                    <%= link_to "Logout", logout_path%>
+                  </li>
+                </ul> <!-- dropdown-menu -->
+              </li> <!-- dropdown -->
+             </ul>
         <%= link_to new_order_path, class:"btn btn-success navbar-btn navbar-right" do %>
             <span class="glyphicon glyphicon-plus"></span> Ny bestilling
         <% end %>
@@ -37,8 +51,13 @@
             <%= link_to new_mass_order_path, class:"btn btn-primary navbar-btn navbar-right" do %>
                 <span class="glyphicon glyphicon-plus"></span> Massebestilling
             <% end %>
+             
         <% end %>
+
+
       </div> <!-- container-fluid -->
+
+
     </div> <!-- navbar navbar-default -->
 <% end %>
 
