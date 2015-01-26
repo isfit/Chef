@@ -53,7 +53,7 @@
                 <tr>
                   <th><%= order.user.given_name + " " + order.user.family_name %></th>
                   <td><%= order.delivered_at.strftime("%a, %d. %b") %></td>
-                  <td><%= order.created_at.strftime("%a, %d. %b") %></td>
+                  <td><%= order.created_at.in_time_zone('Paris').strftime("%a, %d. %b, %H:%M") %></td>
                 </tr>
                 <tr>
                   <td><%= order.location.name %> <br /> <%= order.location.address %> <br /> <%= order.deliver_to %></td>

@@ -22,7 +22,7 @@
     <th>Leveringsdag:</th>
     <tr>
       <td><%= link_to order.location.name, order%></td>
-      <td><%= link_to order.delivered_at.strftime("%a %d. %b, %H:%M"), order %></td>
+      <td><%= link_to order.delivered_at.strftime("%a %d. %b"), order %></td>
       <td class="btn-group" >
           <%= link_to edit_order_path(order), class:"btn" do %>
             <button type="button" class="btn btn-default btn-sm">
