@@ -103,6 +103,8 @@ class OrdersController < ApplicationController
     params[:order]["delivered_at(1i)"] = date.year.to_s
     params[:order]["delivered_at(2i)"] = date.mon.to_s
     params[:order]["delivered_at(3i)"] = date.mday.to_s
+    params[:order]["delivered_at(4i)"] = '12' ##Remove to restore time functionality
+    params[:order]["delivered_at(5i)"] = '00' ##Remove to restore time functionality
     @order = Order.new(params[:order])
     @order.user = current_user
     @meal_types = MealType.all.collect {|p| [ p.title, p.id ] }

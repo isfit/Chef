@@ -11,7 +11,7 @@
 <table class="table span11">
   <tr>
     <th>Leveringsadresse</th>
-    <th>Leveringstidspunkt</th>
+    <th>Leveringsdato</th>
   </tr>
   <tr>
     <td>
@@ -22,7 +22,7 @@
     </td>
     <td>
       <h2><%= @order.delivered_at.strftime("%a, %d. %b") %></br>
-        <%= @order.delivered_at.strftime("%H:%M") %></h2>
+        <%#= @order.delivered_at.strftime("%H:%M") %></h2>
     </td>
   </tr>
 </table>

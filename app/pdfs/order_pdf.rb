@@ -81,11 +81,11 @@ class OrderPdf < Prawn::Document
         :height => 200,
         :width => 200
 
-      text_box order.delivered_at.strftime("%H:%M"),
-        :at => [350,670],
-        :size=>30, :style => :bold,
-        :height => 200,
-        :width => 200
+      #text_box order.delivered_at.strftime("%H:%M"),
+        #:at => [350,670],
+        #:size=>30, :style => :bold,
+        #:height => 200,
+        #:width => 200
 
     horizontal_line 0, 450, :at => 570
       move_down(100)
