@@ -10,29 +10,30 @@
     </div>
   <% end %>
   <p class="col-md-12" style="padding-left: 0px">Måltid leveres normalt til lunsj, andre tidspunkt kan være mulig.</p>
+<div class="row col-md-8">
 <div class="row">
 
 
-  <div class="col-md-8" style="padding-right: 0px">
+  <div class="col-md-12" style="padding-right: 0px">
     <h4>Mattyper og mengde</h4>
     <%= f.fields_for :meals do |meal| %>
       <%= render 'meal_fields', f: meal %>
     <% end %>
   </div>
 
-  <p class="col-md-8" style="padding-right: 0px">
+  <p class="col-md-12" style="padding-right: 0px">
 
   <%= link_to_add_fields "Legg til enda et måltid", f, :meals %>
   </p>
 </div>
 <div class="row">
   <h4 class="col-md-12">Leveringssted og tidspunkt</h4>
-  <div class="col-md-4">
+  <div class="col-md-6">
     <%= f.select :location_id, @locations %>
     <%= f.text_area :deliver_to, rows:4, placeholder:"Spesifikk leveringsadresse (Valgfri)" %>
   </div>
 
-  <div class="col-md-4">
+  <div class="col-md-6">
     <p>
     <%= text_field_tag :date, nil, placeholder:"Leveringsdag",class:"datepicker" %>
     </p>
@@ -44,36 +45,50 @@
       <%= f.text_field :workshop_name, :placeholder => "Workshopnavn (Bare for WOKer)", :style => 'margin-top: 27px' %>
     </p>
   </div>
-  <div class="col-md-4">
-    <div class="well">
-      <h4>Bestillingsinfo</h4>
-      Lunsj leveres i tidsrommet kl 12-13<br />
-      Middag serveres i tidsrommet kl 17-19<br />
-      Middag serveres kun i Hangaren<br />
-      Mat må bestilles senest <b>kl 12 dagen før</b> levering<br />
-      Middag og lunsj <b>må</b> bestilles på separate ordrer
-    </div>
 
-  </div>
 </div>
 <div class="row" style="margin-top: 15px">
-    <div class="col-md-8">
+    <div class="col-md-12">
       <%= f.text_area :comment, rows:3, placeholder:"Kommentar" %>
     </div>
 </div>
-
-
+<div class="row col-md-12">
   <div class="col-md-12" style="padding-left: 0px">
     <p>&nbsp;</p>
-    <%= f.submit "Lever bestilling", class:"btn btn-primary col-md-2"%>
+    <%= f.submit "Lever bestilling", class:"btn btn-primary col-md-4"%>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
   </div>
+</div>
+</div>
+    <div class="col-md-4">
+      <div class="well">
+        <h4>Bestillingsinfo</h4>
+        Lunsj serveres i tidsrommet kl 12-13<br />
+        Middag serveres i tidsrommet kl 16-18<br />
+        <br />
+        <b>Unntaksdager</b><br />
+        <table class="table">
+          <tr><td>05.02</td><td>Ingen matbestilling</td></tr>
+          <tr><td>09.02</td><td>Dalai Lama: Lunsj 11-12</td></tr>
+          <tr><td>10.02</td><td>Skidag: Middag 17-19</td></tr>
+          <tr><td>12.02</td><td>Walk of Peace: Lunsj 11-12. <br />Middag 15.30-16.30</td></tr>
+          <tr><td>15.02</td><td>Avslutningsdag. Middag 15-16</td></tr>
+        </table>
+        Deltakere spiser lunsj i Workshop og middag i Hangaren.<br />
+        Frivillige spiser lunsj og middag på Bodegaen, Samfundet.<br />
+        <br />
+        Mat må bestilles senest kl 12 dagen før levering.<br />
+        Middag og lunsj må bestilles på separate ordrer.<br />
+        <br />
+      </div>
+
+    </div>
 <% end %>
 <script>
   $('.datepicker').datepicker({
     startDate:new Date(2015,1,5),
-    endDate:new Date(2015,1,15),
+    endDate:new Date(2015,1,16),
     format: 'yyyy-mm-dd',
     autoclose: true
   });
