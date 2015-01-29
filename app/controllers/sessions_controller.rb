@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   before_filter :login_required, :except => [:new, :create]
 
   def new
+
   end
 
   def create
@@ -20,6 +21,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to 'sessions#new', :notice => "Logget ut."
+    redirect_to login_path, :notice => "Logget ut."
   end
 end
